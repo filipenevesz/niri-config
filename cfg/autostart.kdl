@@ -1,0 +1,13 @@
+// ────────────── Startup Applications ──────────────
+
+// Atualiza o ambiente D-Bus e Systemd para Wayland (Necessário para D-Bus / Keyring / Portals)
+spawn-sh-at-startup "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
+
+// Inicia o Gerenciador de Senhas / Tokens (GNOME Keyring) para salvar logins do Antigravity, VS Code e Navegadores
+spawn-sh-at-startup "gnome-keyring-daemon --start --components=secrets,pkcs11,ssh"
+
+// Agente de Autenticação Polkit (para janelas de senha de Administrador/Root)
+spawn-sh-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
+// Inicia a Shell do Noctalia (Barra, Wallpaper, Notificações, Lançador)
+spawn-sh-at-startup "qs -c noctalia-shell"

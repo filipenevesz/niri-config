@@ -1,0 +1,42 @@
+// Workspaces estáticos no monitor principal (LG UltraGear)
+workspace "1" { open-on-output "HDMI-A-1"; }
+workspace "2" { open-on-output "HDMI-A-1"; }
+workspace "3" { open-on-output "HDMI-A-1"; }
+workspace "4" { open-on-output "HDMI-A-1"; }
+workspace "5" { open-on-output "HDMI-A-1"; }
+workspace "6" { open-on-output "HDMI-A-1"; }
+workspace "7" { open-on-output "HDMI-A-1"; }
+workspace "8" { open-on-output "HDMI-A-1"; }
+workspace "9" { open-on-output "HDMI-A-1"; }
+
+window-rule {
+    // Bordas arredondadas em todas as janelas (14px)
+    geometry-corner-radius 14
+    clip-to-geometry true
+}
+
+// Regra para abrir o Spotify diretamente no workspace 9
+window-rule {
+    match app-id="spotify"
+    match app-id="Spotify"
+    open-on-workspace "9"
+}
+
+// Regras para abrir janelas específicas como flutuantes por padrão
+window-rule {
+    match app-id="steam"
+    exclude title=r#"^[Ss]team$"#
+    open-floating true
+}
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+}
+
+// Regra para o papel de parede do Noctalia
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}

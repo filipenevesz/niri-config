@@ -1,0 +1,151 @@
+binds {
+
+    // ────────────── Atalhos do Teclado (Niri + Noctalia) ──────────────
+
+    // Mostrar overlay de atalhos de teclado (Ajuda)
+    Mod+Shift+ESCAPE                     { show-hotkey-overlay; }
+
+    // Alternar Layout do Teclado (US Internacional <-> BR ABNT2)
+    Mod+Shift+K                          hotkey-overlay-title="Alternar Teclado (US Intl <-> BR ABNT2)" { switch-layout "next"; }
+
+    // Gerenciador de Tarefas (btop no Kitty - igual Ctrl+Shift+Esc do Windows)
+    CTRL+Shift+ESCAPE                    hotkey-overlay-title="Gerenciador de Tarefas: btop" { spawn "kitty" "-e" "btop"; }
+
+    // ─── Aplicativos Principais ───
+    Mod+Return                          hotkey-overlay-title="Terminal: Kitty" { spawn "kitty"; }
+    Mod+B                               hotkey-overlay-title="Navegador: Brave" { spawn "brave"; }
+
+    // ─── Lançadores e Shell Noctalia ───
+    Mod+Space                           hotkey-overlay-title="Lançador de Apps (Noctalia)" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Alt+Space                           hotkey-overlay-title="Lançador de Apps (Noctalia)" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+CTRL+Return                     hotkey-overlay-title="Lançador de Apps (Noctalia)" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+
+    Mod+V                               hotkey-overlay-title="Gerenciador de Área de Transferência (Noctalia)" { spawn-sh "qs -c noctalia-shell ipc call clipboard toggle"; }
+    Mod+ALT+L                           hotkey-overlay-title="Bloquear Tela" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Mod+Shift+Q                         hotkey-overlay-title="Menu de Sessão / Sair" { spawn-sh "qs -c noctalia-shell ipc call sessionMenu toggle"; }
+
+    // Gerenciador de Arquivos (Nautilus)
+    Mod+E                               hotkey-overlay-title="Gerenciador de Arquivos: Nautilus" { spawn "nautilus"; }
+
+    // ─── Controles de Mídia e Volume ───
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
+    XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
+    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
+    XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
+
+    // ─── Controles de Brilho ───
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
+
+    // ─── Fechar e Manipular Janelas ───
+    Mod+Q                               { close-window; }
+    Alt+Q                               { close-window; }
+    Alt+F4                              { close-window; }
+
+    // Forçar Fechamento Imediato (Kill -9 no processo da janela focada)
+    Mod+CTRL+Q                          hotkey-overlay-title="Forçar Fechamento Imediato (Kill)" { spawn-sh "niri msg -j focused-window | grep -o '\"pid\":[0-9]*' | cut -d: -f2 | xargs -r kill -9"; }
+
+    // Foco (Setas, HJKL e WASD)
+    Mod+Left                            { focus-column-left; }
+    Mod+H                               { focus-column-left; }
+    Alt+A                               { focus-column-left; }
+
+    Mod+Right                           { focus-column-right; }
+    Mod+L                               { focus-column-right; }
+    Alt+D                               { focus-column-right; }
+
+    Mod+Up                              { focus-window-up; }
+    Mod+K                               { focus-window-up; }
+    Alt+W                               { focus-workspace-up; }
+
+    Mod+Down                            { focus-window-down; }
+    Mod+J                               { focus-window-down; }
+    Alt+S                               { focus-workspace-down; }
+
+    // Mover Colunas / Janelas
+    Mod+CTRL+Left                       { move-column-left; }
+    Mod+CTRL+H                          { move-column-left; }
+    Mod+CTRL+Right                      { move-column-right; }
+    Mod+CTRL+L                          { move-column-right; }
+    Mod+CTRL+UP                         { move-window-up; }
+    Mod+CTRL+K                          { move-window-up; }
+    Mod+CTRL+Down                       { move-window-down; }
+    Mod+CTRL+J                          { move-window-down; }
+
+    // Início / Fim da Fita
+    Mod+Home                            { focus-column-first; }
+    Mod+End                             { focus-column-last; }
+    Mod+CTRL+Home                       { move-column-to-first; }
+    Mod+CTRL+End                        { move-column-to-last; }
+
+    // Mover Foco Entre Monitores (Notebook <-> Monitor Externo)
+    Mod+Shift+Left                      { focus-monitor-left; }
+    Mod+Shift+Right                     { focus-monitor-right; }
+    Mod+Shift+UP                        { focus-monitor-up; }
+    Mod+Shift+Down                      { focus-monitor-down; }
+
+    // Mover Coluna Inteira Para o Outro Monitor
+    Mod+Shift+CTRL+Left                 { move-column-to-monitor-left; }
+    Mod+Shift+CTRL+Right                { move-column-to-monitor-right; }
+    Mod+Shift+CTRL+UP                   { move-column-to-monitor-up; }
+    Mod+Shift+CTRL+Down                 { move-column-to-monitor-down; }
+
+    // ─── Workspaces (Navegação 1 a 9) ───
+    Mod+1                               { focus-workspace 1; }
+    Mod+2                               { focus-workspace 2; }
+    Mod+3                               { focus-workspace 3; }
+    Mod+4                               { focus-workspace 4; }
+    Mod+5                               { focus-workspace 5; }
+    Mod+6                               { focus-workspace 6; }
+    Mod+7                               { focus-workspace 7; }
+    Mod+8                               { focus-workspace 8; }
+    Mod+9                               { focus-workspace 9; }
+
+    Mod+CTRL+1                          { move-column-to-workspace 1; }
+    Mod+CTRL+2                          { move-column-to-workspace 2; }
+    Mod+CTRL+3                          { move-column-to-workspace 3; }
+    Mod+CTRL+4                          { move-column-to-workspace 4; }
+    Mod+CTRL+5                          { move-column-to-workspace 5; }
+    Mod+CTRL+6                          { move-column-to-workspace 6; }
+    Mod+CTRL+7                          { move-column-to-workspace 7; }
+    Mod+CTRL+8                          { move-column-to-workspace 8; }
+    Mod+CTRL+9                          { move-column-to-workspace 9; }
+
+    Mod+TAB                             { focus-workspace-previous; }
+
+    // ─── Layout e Tamanho das Janelas ───
+    Mod+CTRL+F                          { expand-column-to-available-width; }
+    Mod+C                               { center-column; }
+    Alt+C                               { center-column; }
+    Mod+CTRL+C                          { center-visible-columns; }
+    Alt+M                               { maximize-column; }
+    Mod+F                               { fullscreen-window; }
+    Mod+T                               { toggle-window-floating; }
+    Mod+W                               { toggle-column-tabbed-display; }
+
+    // Juntar / Separar janelas em colunas
+    Mod+BracketLeft                     { consume-window-into-column; }
+    Mod+BracketRight                    { expel-window-from-column; }
+
+    // Redimensionamento
+    Mod+Minus                           { set-column-width "-10%"; }
+    Mod+Equal                           { set-column-width "+10%"; }
+    Mod+Shift+Minus                     { set-window-height "-10%"; }
+    Mod+Shift+Equal                     { set-window-height "+10%"; }
+
+    // ─── Capturas de Tela (Screenshots) ───
+    Print                               { screenshot; }
+    Alt+Print                           { screenshot-window; }
+    Ctrl+Print                          { screenshot-screen; }
+    CTRL+Shift+1                        { screenshot; }
+    CTRL+Shift+2                        { screenshot-screen; }
+    CTRL+Shift+3                        { screenshot-window; }
+
+    // ─── Saída / Geral ───
+    CTRL+ALT+Delete                     { quit; }
+    Mod+O                               repeat=false { toggle-overview; }
+}

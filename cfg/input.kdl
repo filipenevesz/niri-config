@@ -1,0 +1,29 @@
+// ────────────── Input Configuration ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Input
+
+input {
+    keyboard {
+        xkb {
+            // Suporte para 2 layouts de teclado:
+            // 1. US Internacional (Attack Shark X68HE com acentos mortos ' + e = é, ' + c = ç)
+            // 2. BR ABNT2 (Teclado padrão brasileiro com ç nativo do escritório)
+            layout "us,br"
+            variant "intl,abnt2"
+        }
+        numlock // Ativar teclado numérico ao iniciar
+    }
+
+    touchpad {
+        tap // Toque para clicar
+        natural-scroll // Rolagem natural
+    }
+
+    mouse {
+        // Desativa a aceleração de mouse completamente (Perfil RAW 1:1 / Flat)
+        accel-profile "flat"
+        accel-speed 0.0
+    }
+
+    focus-follows-mouse // Foco automático na janela sob o ponteiro do mouse
+    workspace-auto-back-and-forth // Alternar entre o workspace atual e o anterior
+}

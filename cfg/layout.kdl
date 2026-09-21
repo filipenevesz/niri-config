@@ -1,0 +1,21 @@
+layout {
+    gaps 8 // Espaçamento entre as janelas (Reduzido de 16 para 8px)
+    center-focused-column "never"
+
+    background-color "transparent" // Necessário para o Noctalia carregar o wallpaper
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    // Borda colorida em gradiente na janela focada (3px de largura com Cyan #00BFFF e Roxo Forte #9D00FF)
+    focus-ring {
+        width 3
+        active-gradient from="#00BFFF" to="#9D00FF" angle=45
+        inactive-color "#44475a"
+    }
+
+    struts {}
+}
